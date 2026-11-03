@@ -1,0 +1,122 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "probpca"
+dynamic = ["version"]
+description = "Probabilistic and Bayesian PCA: PPCA, mixtures of PPCA, GLM-PCA, logistic PCA and Bayesian PCA with automatic rank selection, missing data and held-out likelihood, with a scikit-learn API."
+readme = "README.md"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+authors = [{ name = "The probpca developers" }]
+keywords = [
+    "probabilistic pca",
+    "bayesian pca",
+    "ppca",
+    "mixture of ppca",
+    "glm-pca",
+    "logistic pca",
+    "automatic relevance determination",
+    "dimensionality reduction",
+    "bayesian",
+    "probabilistic models",
+    "missing data",
+    "scikit-learn",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Typing :: Typed",
+]
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11.2",
+    "scikit-learn>=1.6",
+    "numba>=0.60",
+]
+
+[project.optional-dependencies]
+# JAX backend for the models that benefit from it; the base install stays NumPy + numba.
+jax = ["jax>=0.4.30"]
+# MCMC through NumPyro, needed only by the models that sample.
+mcmc = ["numpyro>=0.15", "jax>=0.4.30"]
+test = ["pytest>=7.4", "pytest-cov>=5", "hypothesis>=6.100"]
+docs = [
+    "sphinx>=7",
+    "numpydoc>=1.6",
+    "sphinx-gallery>=0.15",
+    "pydata-sphinx-theme>=0.15",
+    "matplotlib>=3.7",
+]
+dev = ["probpca[test,docs]", "ruff>=0.5", "mypy>=1.10", "pre-commit>=3.5", "build>=1.2", "twine>=5"]
+
+[project.urls]
+Homepage = "https://github.com/siddC/probPCA"
+Documentation = "https://probpca.readthedocs.io"
+Repository = "https://github.com/siddC/probPCA"
+Issues = "https://github.com/siddC/probPCA/issues"
+Changelog = "https://github.com/siddC/probPCA/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/probpca/__init__.py"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/probpca",
+    "tests",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "pyproject.toml",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/probpca"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--strict-markers", "--strict-config"]
+markers = [
+    "slow: recovery and reproduction runs on larger inputs (deselect with -m 'not slow')",
+]
+filterwarnings = [
+    "error",
+    "ignore::numba.core.errors.NumbaPerformanceWarning",
+]
+
+[tool.coverage.run]
+source = ["probpca"]
+branch = true
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY"]
+ignore = ["E741", "B905"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src/probpca"]
+warn_unused_ignores = true
+warn_redundant_casts = true
+no_implicit_optional = true
+check_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = ["sklearn.*", "scipy.*", "numba.*", "jax.*", "numpyro.*"]
+ignore_missing_imports = true

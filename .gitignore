@@ -1,0 +1,26 @@
+__pycache__/
+*.py[cod]
+*.nbi
+*.nbc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.hypothesis/
+.coverage
+coverage.xml
+htmlcov/
+.venv/
+.asv/
+docs/_build/
+docs/auto_examples/
+docs/generated/
+docs/sg_execution_times.rst
+.ipynb_checkpoints/
+*.npy
+*.npz
+
+# downloaded inputs for reproduction scripts
+reproduction/.cache/

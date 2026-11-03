@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use probPCA, please cite it as below."
+title: "probPCA: probabilistic and Bayesian PCA"
+abstract: "Probabilistic and Bayesian PCA: PPCA, mixtures of PPCA, GLM-PCA, logistic PCA and Bayesian PCA with automatic rank selection, missing data and held-out likelihood, with a scikit-learn API."
+type: software
+authors:
+  - family-names: Chauhan
+    given-names: Siddharth
+license: BSD-3-Clause
+repository-code: "https://github.com/siddC/probPCA"
+url: "https://probpca.readthedocs.io"
+keywords:
+  - "probabilistic pca"
+  - "bayesian pca"
+  - "ppca"
+  - "mixture of ppca"
+  - "glm-pca"
+  - "logistic pca"
+  - "automatic relevance determination"
+  - "dimensionality reduction"
+  - "bayesian"
+  - "probabilistic models"
+  - "missing data"
+  - "scikit-learn"

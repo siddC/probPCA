@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "project": "probpca",
+    "project_url": "https://github.com/siddC/probPCA",
+    "repo": ".",
+    "branches": ["main"],
+    "environment_type": "virtualenv",
+    "pythons": ["3.13"],
+    "build_command": ["python -m build --wheel -o {build_cache_dir} {build_dir}"],
+    "benchmark_dir": "benchmarks",
+    "env_dir": ".asv/env",
+    "results_dir": ".asv/results",
+    "html_dir": ".asv/html"
+}

@@ -1,0 +1,30 @@
+name: Model request
+description: Propose a model for probpca
+labels: [model]
+body:
+  - type: input
+    id: paper
+    attributes:
+      label: Source paper
+      description: Full citation and an open link (arXiv, PMLR, HAL, PMC).
+    validations:
+      required: true
+  - type: textarea
+    id: model
+    attributes:
+      label: Model
+      description: Observation model, priors and inference method.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it belongs here
+      description: Data it suits, and why existing packages do not cover it (missing, incorrect or point-estimate only).
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Published results to reproduce
+      description: The experiments, tables or figures that layer 3 of the correctness standard would rerun.

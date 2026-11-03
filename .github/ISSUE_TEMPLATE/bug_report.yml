@@ -1,0 +1,27 @@
+name: Bug report
+description: A wrong result, an error or a crash
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you ran, what you expected and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal example
+      description: Code that reproduces the problem, ideally on simulated data from `probpca.datasets`.
+      render: python
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versions
+      description: Output of `python -c "import probpca, numpy, scipy, sklearn, numba, sys; print(sys.version, probpca.__version__, numpy.__version__, scipy.__version__, sklearn.__version__, numba.__version__)"`
+      render: text
+    validations:
+      required: true
